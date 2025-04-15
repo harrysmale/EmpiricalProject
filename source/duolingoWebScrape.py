@@ -22,9 +22,8 @@ for row in table.find_all('tr'):
         data.append(row_data) # adds the data to the dataframe
     else:
         # reporting any mismatches
-        print("Skipping row (column mismatch):", row_data)
+        print("Row skipped because of column mismatch", row_data)
 
 df = pd.DataFrame(data, columns=headers)
-print(df.head())
 # save the DataFrame to a CSV file which can be used for further analysis
 df.to_csv('duolingo_data.csv', index=False)
