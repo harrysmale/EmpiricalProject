@@ -31,7 +31,7 @@ df = pd.DataFrame(data, columns=headers)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Construct the path to the sibling 'data' folder
-data_dir = os.path.join(current_dir, 'data')
+data_dir = os.path.join(current_dir, '..','data')
 
 
 # Construct the full path for the CSV file
