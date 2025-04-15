@@ -1,6 +1,7 @@
 # DUOLINGO Data Analysis
 
 ## Web Scraping
+
 - The data was scraped from the website https://duolingodata.com using BeautifulSoup
 - As the HTML on the website is poorly formatted, html5lib was used as the parser
 - The output of the web scrape is a CSV file containing the following columns:
