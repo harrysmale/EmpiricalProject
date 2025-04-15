@@ -1,4 +1,4 @@
-# DUOLINGO Data Analysis
+# Duolingo Data Analysis
 
 ## Web Scraping
 
