@@ -1,6 +1,7 @@
 from urllib import request
 from bs4 import BeautifulSoup
 import pandas as pd
+import os
 
 site = 'https://duolingodata.com' # this website contains the data (in table form) of Duolingo courses
 html = request.urlopen(site) # Open the URL
@@ -26,4 +27,13 @@ for row in table.find_all('tr'):
 
 df = pd.DataFrame(data, columns=headers)
 # save the DataFrame to a CSV file which can be used for further analysis
-df.to_csv('duolingo_data.csv', index=False)
+# Get the directory of the current script
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the path to the sibling 'data' folder
+data_dir = os.path.join(current_dir, 'data')
+
+
+# Construct the full path for the CSV file
+csv_path = os.path.join(data_dir, 'duolingo_data.csv')
+df.to_csv(csv_path, index=False)
