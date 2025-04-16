@@ -2,7 +2,7 @@ import sqlite3
 import csv
 import os
 
-# Construct the database path dynamically
+# Construct the database path based on current directory (so it works for any user)
 base_dir = os.path.dirname(os.path.dirname(__file__))  # Go back one folder
 db_path = os.path.join(base_dir, 'data', 'duolingoDatabase.db')
 
@@ -29,7 +29,6 @@ CREATE TABLE IF NOT EXISTS temp_data (
 )
 ''')
 
-# Replace this with the actual path to your CSV file
 csv_path = os.path.join(base_dir, 'data', 'duolingo_data.csv')
 
 
@@ -74,7 +73,8 @@ for origin in origins:
         WHERE Origin = "{origin_value}";
         '''
         cursor.execute(insert_data_sql)
-# Commit the changes and clean up
+        
+# Commit the changes and delete the temp_data table
 conn.commit()
 cursor.execute("DROP TABLE temp_data")
 conn.close()
