@@ -37,3 +37,5 @@ data_dir = os.path.join(current_dir, '..','data')
 # Construct the full path for the CSV file
 csv_path = os.path.join(data_dir, 'duolingo_data.csv')
 df.to_csv(csv_path, index=False)
+
+
