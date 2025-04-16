@@ -26,6 +26,16 @@ for row in table.find_all('tr'):
         print("Row skipped because of column mismatch", row_data)
 
 df = pd.DataFrame(data, columns=headers)
+
+# As some of the columns contain langauge levels (A1, B2 etc.) this is not relevant (as there is only one version for each langauge and they do not match across origins) so we remove the language level.
+# To preserve the data we add the language level to a new column
+if 'Learning' in df.columns:
+    # Extract CEFR level and add it to a new column using regex
+    df['CEFR'] = df['Learning'].str.extract(r'([A-Z][0-9])', expand=False) 
+
+    # Remove the CEFR level from the 'Learning' column
+    df['Learning'] = df['Learning'].str.replace(r'([A-Z][0-9])', '', regex=True).str.strip()
+
 # save the DataFrame to a CSV file which can be used for further analysis
 # Get the directory of the current script
 current_dir = os.path.dirname(os.path.abspath(__file__))

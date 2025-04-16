@@ -25,7 +25,8 @@ CREATE TABLE IF NOT EXISTS temp_data (
     S INTEGER,
     W INTEGER,
     R REAL,
-    D INTEGER
+    D INTEGER,
+    CEFR TEXT
 )
 ''')
 
@@ -38,9 +39,16 @@ with open(csv_path, 'r') as file:
     next(reader)  # Skip the header row
     for row in reader:
         cursor.execute('''
-        INSERT INTO temp_data (Leaning, Origin, U, Lr, Ls, S, W, R, D)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO temp_data (Leaning, Origin, U, Lr, Ls, S, W, R, D, CEFR)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', row)
+
+# Dropping rows with empty values in the Lr column - this is because in some cases there are duplicate courses for each language (such as an old and new version).
+# The old version has no learners so it is not relevant to the analysis and should be dropped.
+cursor.execute('''
+               DELETE FROM temp_data
+               WHERE Lr IS NULL OR LR = '';
+               ''')
 
 # Get the unique values in the Origin column
 cursor.execute("SELECT DISTINCT Origin FROM temp_data")
@@ -60,20 +68,21 @@ for origin in origins:
             S INTEGER,
             W INTEGER,
             R REAL,
-            D INTEGER
+            D INTEGER,
+            CEFR TEXT
         );
         '''
         cursor.execute(create_table_schema_sql)
 
         # Inserting data into new tables
         insert_data_sql = f'''
-        INSERT INTO "{origin_value}" (Leaning, Origin, U, Lr, Ls, S, W, R, D)
-        SELECT Leaning, Origin, U, Lr, Ls, S, W, R, D
+        INSERT INTO "{origin_value}" (Leaning, Origin, U, Lr, Ls, S, W, R, D, CEFR)
+        SELECT Leaning, Origin, U, Lr, Ls, S, W, R, D, CEFR
         FROM temp_data
         WHERE Origin = "{origin_value}";
         '''
         cursor.execute(insert_data_sql)
-        
+
 # Commit the changes and delete the temp_data table
 conn.commit()
 cursor.execute("DROP TABLE temp_data")
