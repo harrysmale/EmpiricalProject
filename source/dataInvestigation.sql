@@ -18,4 +18,4 @@ WHERE Learning = 'Spanish';
 -- Finding which languages offer courses in Guarani
 SELECT DISTINCT origin_id
 FROM all_data
-WHERE learning LIKE 'Hungarian';
+WHERE learning LIKE 'Guarani';
