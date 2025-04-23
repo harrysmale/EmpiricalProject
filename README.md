@@ -40,3 +40,7 @@ This project is a data analysis of the Duolingo language learning app. It uses w
   2. Run the data management code (relationaldatabases.py) to create the SQLite database and add the data to it.
   3. Run the code in the Jupyer Notebook (blog.ipynb) to create the visualisations.
 - Additionally, the queries in dataInvestigation.sql can be run to investigate the data in the database.
+
+## Plots and Data
+- The web scraping code and the data management code create files in the data folder. However, versions of these files are also included in the repository, but these will be overwritten if the code is run. 
+- The plots produced in the blog are also included in the images folder, but these will be overwritten if the code is run.
