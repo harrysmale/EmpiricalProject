@@ -1,6 +1,10 @@
 # Duolingo Data Analysis
 
-## Web Scraping
+
+## Overview
+This project is a data analysis of the Duolingo language learning app. It uses web scraping and data management (through SQL and Python) to analyise the data. The data is then visualised in a blog written in Jupyter Notebook.
+
+### Web Scraping
 
 - The data was scraped from the website https://duolingodata.com using BeautifulSoup
 - As the HTML on the website is poorly formatted, html5lib was used as the parser
@@ -18,6 +22,21 @@
     - The initial web scrape included this within the 'Learning' column, but it was separated out for clarity, and because it is not always present
     - The seperation was done using regex
 
-## Data Management
+### Data Management
 
-- The dataManagementPython.py file contains the code to read the CSV file, store its data in an SQLite database, and then create separate tables for each unique 'Origin'. 
+- The relationaldatabases.py file contains the code to read the CSV file, store its data in an SQLite database, and use relational databases to make the data more manageable. This file also contains the SQL queries which add a list of countries that speak the language to the database, which is used to create the map in the blog. 
+- The database is a file called duolingoDatabase.db
+- There is also a file named dataInvestigation.sql which contains some SQL queries to investigate the data in the database.
+
+### Blog
+
+- The blog is written in Jupyter Notebook and contains various visualisations of the data. 
+
+## Running the Project
+
+- To run the project, you will need Python 3.x and SQLite3 installed on your machine, along with the libraries imported in the code.
+- The project is run in the following order:
+  1. Run the web scraping code (duolingoWebScrape.py) to create the CSV file.
+  2. Run the data management code (relationaldatabases.py) to create the SQLite database and add the data to it.
+  3. Run the code in the Jupyer Notebook (blog.ipynb) to create the visualisations.
+- Additionally, the queries in dataInvestigation.sql can be run to investigate the data in the database.
