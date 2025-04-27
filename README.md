@@ -2,7 +2,7 @@
 
 
 ## Overview
-This project is a data analysis of the Duolingo language learning app. It uses web scraping and data management (through SQL and Python) to analyise the data. The data is then visualised in a blog written in Jupyter Notebook.
+This project is a data analysis of the Duolingo language learning app. It uses web scraping and data management (through SQL and Python) to analyse the data. The data is then visualised in a blog written in Jupyter Notebook.
 
 ### Web Scraping
 
@@ -20,7 +20,7 @@ This project is a data analysis of the Duolingo language learning app. It uses w
   - 'D': The number of different lessons
 - This file also created a new column 'CEFR' which contains the CEFR level of the course:
     - The initial web scrape included this within the 'Learning' column, but it was separated out for clarity, and because it is not always present
-    - The seperation was done using regex
+    - The separation was done using regex
 
 ### Data Management
 
@@ -53,5 +53,6 @@ This project is a data analysis of the Duolingo language learning app. It uses w
 - Additionally, the queries in dataInvestigation.sql can be run to investigate the data in the database.
 
 ## Plots and Data
+
 - The web scraping code and the data management code create files in the data folder. However, versions of these files are also included in the repository, but these will be overwritten if the code is run. 
 - The plots produced in the blog are also included in the images folder, but these will be overwritten if the code is run to provide the most up to date versions.
