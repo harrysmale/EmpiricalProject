@@ -35,6 +35,17 @@ This project is a data analysis of the Duolingo language learning app. It uses w
 ## Running the Project
 
 - To run the project, you will need Python 3.x and SQLite3 installed on your machine, along with the libraries imported in the code.
+- The libraries used in the project are:
+  - urllib
+  - bs4
+  - pandas
+  - os
+  - sqlite3
+  - csv
+  - matplotlib.pyplot
+  - plotly.express
+  - plotly.graph_objects
+  - statsmodels.api
 - The project is run in the following order:
   1. Run the web scraping code (duolingoWebScrape.py) to create the CSV file.
   2. Run the data management code (relationaldatabases.py) to create the SQLite database and add the data to it.
@@ -43,4 +54,4 @@ This project is a data analysis of the Duolingo language learning app. It uses w
 
 ## Plots and Data
 - The web scraping code and the data management code create files in the data folder. However, versions of these files are also included in the repository, but these will be overwritten if the code is run. 
-- The plots produced in the blog are also included in the images folder, but these will be overwritten if the code is run.
+- The plots produced in the blog are also included in the images folder, but these will be overwritten if the code is run to provide the most up to date versions.
